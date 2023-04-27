@@ -3,17 +3,50 @@ import java.util.Scanner;
 
 public class CharacterCreationMenu {
 
-	
-	
-	
-	
-	
-	
-	
-	
-	public static void main(String[] args) 
-	{
+		private String name = "";
+		private String playerClass = "";
+		private int difficulty = 1;
 		
+		
+		
+		
+		
+		
+	public void setName(String n)
+	{
+		name = n;
+	}
+	
+	public void SetPlayerClass(String c)
+	{
+		playerClass = c;
+	}
+	
+	public void setDifficulty(int d)
+	{
+		difficulty = d;
+	}
+		
+	//-----------------------
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public String getPlayerClass()
+	{
+		return playerClass;
+	}
+	
+	public int getDifficulty()
+	{
+		return difficulty;
+	}
+	
+	
+	public void start()
+	{
 		String name = "";
 		String playerClass = "";
 		int difficulty = 1;
@@ -26,37 +59,115 @@ public class CharacterCreationMenu {
 		
 		
 		System.out.println("Please type in the class for your character: \n");
-		System.out.println("1) Warrior (Health up | speed down)\n");
-		System.out.println("2) Mage (Attack up | health down)\n");
-		System.out.println("3) Archer (Accuracy up | low attack)\n");
-		System.out.println("Class number: \n");
+		System.out.println("1) Warrior (Health up | speed down)");
+		System.out.println("2) Mage (Attack up | accuracy down)");
+		System.out.println("3) Archer (Accuracy up | health)");
+		System.out.println("Class name: ");
 		
 		playerClass = scan.next();
 		
 		
 		System.out.println("Please type in number for difficulty: \n");
-		System.out.println("1) Easy \n");
-		System.out.println("2) Medium \n");
-		System.out.println("3) Hard \n");
-		System.out.println("Difficulty of choice: \n");
+		System.out.println("1) Easy ");
+		System.out.println("2) Medium ");
+		System.out.println("3) Hard ");
+		System.out.println("Difficulty of choice: ");
 		
 		difficulty = scan.nextInt();
 		
 		
-		if(playerClass == "warrior" || playerClass == "Warrior")
+		
+		switch(playerClass)
 		{
-			Warrior thePlayer = new Warrior(name, difficulty);
-		}
-		else if(playerClass == "mage" || playerClass == "Mage")
-		{
-			Mage thePlayer = new Mage(name, difficulty);
-		}
-		else if(playerClass == "archer" || playerClass == "Archer")
-		{
-			Archer thePlayer = new Archer(name, difficulty);
+			case "warrior":
+			{
+				
+			}
+			case "Warrior":
+			{
+				System.out.println("uh oh");
+				
+				Warrior thePlayer = new Warrior(name, difficulty);
+				MapMenu map = new MapMenu(thePlayer);
+				
+				boolean dog = true;
+				
+				while(dog == true)
+				{
+					
+					map.movement();
+					
+					
+				}
+				
+				break;
+			}
+			case "mage":
+			{
+				
+			}
+			case "Mage":
+			{
+				Mage thePlayer = new Mage(name, difficulty);
+				MapMenu map = new MapMenu(thePlayer);
+				
+				boolean dog = true;
+				
+				while(dog == true)
+				{
+					
+					map.movement();
+					
+					
+				}
+				
+				break;
+			}
+			case "archer":
+			{
+				
+			}
+			case "Archer":
+			{
+				Archer thePlayer = new Archer(name, difficulty);
+				MapMenu map = new MapMenu(thePlayer);
+				
+				boolean dog = true;
+				
+				while(dog == true)
+				{
+					
+					map.movement();
+					
+					
+				}
+				
+				break;
+			}
+			default:
+			{
+				
+			}
+			
+			
+			
+			
 		}
 		
-
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) 
+	{
+		
+		//CharacterCreationMenu letsgo = new CharacterCreationMenu();
+		//letsgo.start();
+		
+		
+		
 		
 		
 		
