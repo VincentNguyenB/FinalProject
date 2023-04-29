@@ -1,5 +1,5 @@
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.Scanner;
 
 public class MapMenu {
@@ -28,6 +28,7 @@ public class MapMenu {
 				setMapWidth(3);
 				setMapLength(3);
 				System.out.println("Generated map is a 3x3 grid \n");
+				movementMessage();
 				
 				break;
 			}
@@ -36,6 +37,7 @@ public class MapMenu {
 				setMapWidth(4);
 				setMapLength(4);
 				System.out.println("Generated map is a 4x4 grid \n");
+				movementMessage();
 				
 				break;
 			}
@@ -44,6 +46,7 @@ public class MapMenu {
 				setMapWidth(5);
 				setMapLength(5);
 				System.out.println("Generated map is a 5x5 grid \n");
+				movementMessage();
 				
 				break;
 			}
@@ -52,7 +55,7 @@ public class MapMenu {
 				
 			}
 		
-			movementMessage();
+			//movementMessage();
 		
 		}
 		
@@ -126,7 +129,7 @@ public class MapMenu {
 		
 	}
 	
-	public void movement()
+	public void movement(Player player)
 	{
 		
 		String direction = "";
@@ -151,7 +154,7 @@ public class MapMenu {
 			}
 			case "North":
 			{
-				if(checkWall(getYCoor() + 1) == false)
+				if(checkWall(getYCoor() + 1, player) == false)
 				{
 					setYCoor(getYCoor() + 1);
 				}
@@ -164,7 +167,7 @@ public class MapMenu {
 			}
 			case "South":
 			{
-				if(checkWall(getYCoor() - 1) == false)
+				if(checkWall(getYCoor() - 1, player) == false)
 				{
 					setYCoor(getYCoor() - 1);
 				}
@@ -177,7 +180,7 @@ public class MapMenu {
 			}
 			case "East":
 			{
-				if(checkWall(getXCoor() + 1) == false)
+				if(checkWall(getXCoor() + 1, player) == false)
 				{
 					setXCoor(getXCoor() + 1);
 				}
@@ -190,7 +193,7 @@ public class MapMenu {
 			}
 			case "West":
 			{
-				if(checkWall(getXCoor() - 1) == false)
+				if(checkWall(getXCoor() - 1, player) == false)
 				{
 					setXCoor(getXCoor() - 1);
 				}
@@ -203,14 +206,15 @@ public class MapMenu {
 		
 		}
 		
+		
 		movementMessage();
 		
-		
+		//scan.close();
 		
 	}
 	
 	
-	public boolean checkWall(int value)
+	public boolean checkWall(int value, Player player)
 	{
 		
 		
@@ -218,6 +222,8 @@ public class MapMenu {
 		{
 			System.out.println("You've hit a wall, idiot. \n");
 			System.out.println("You've taken 5 damage. \n");
+			
+			player.setCurrentHealth(player.getCurrentHealth() - 5);
 			
 			return true;
 		}
@@ -251,7 +257,7 @@ public class MapMenu {
 	{
 		
 		
-		Warrior testWarrior = new Warrior("Bob", 1);
+		Player testWarrior = new Player("Bob", 1);
 		
 		MapMenu playerMap = new MapMenu(testWarrior);
 				
@@ -260,7 +266,7 @@ public class MapMenu {
 		while(dog == true)
 		{
 			
-			playerMap.movement();
+			playerMap.movement(testWarrior);
 			
 			
 		}
