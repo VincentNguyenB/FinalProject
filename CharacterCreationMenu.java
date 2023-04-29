@@ -3,46 +3,22 @@ import java.util.Scanner;
 
 public class CharacterCreationMenu {
 
-		private String name = "";
-		private String playerClass = "";
-		private int difficulty = 1;
+	
+	private Player createdPlayer;
 		
 		
-		
-		
-		
-		
-	public void setName(String n)
+	public void setPlayer(Player p)
 	{
-		name = n;
+		createdPlayer = p;
 	}
 	
-	public void SetPlayerClass(String c)
-	{
-		playerClass = c;
-	}
+	//--------------
 	
-	public void setDifficulty(int d)
+	public Player getPlayer()
 	{
-		difficulty = d;
+		return createdPlayer;
 	}
 		
-	//-----------------------
-	
-	public String getName()
-	{
-		return name;
-	}
-	
-	public String getPlayerClass()
-	{
-		return playerClass;
-	}
-	
-	public int getDifficulty()
-	{
-		return difficulty;
-	}
 	
 	
 	public void start()
@@ -61,7 +37,7 @@ public class CharacterCreationMenu {
 		System.out.println("Please type in the class for your character: \n");
 		System.out.println("1) Warrior (Health up | speed down)");
 		System.out.println("2) Mage (Attack up | accuracy down)");
-		System.out.println("3) Archer (Accuracy up | health)");
+		System.out.println("3) Archer (Accuracy up | health down)");
 		System.out.println("Class name: ");
 		
 		playerClass = scan.next();
@@ -75,6 +51,7 @@ public class CharacterCreationMenu {
 		
 		difficulty = scan.nextInt();
 		
+		Player createdPlayer = new Player(name, difficulty);
 		
 		
 		switch(playerClass)
@@ -85,20 +62,10 @@ public class CharacterCreationMenu {
 			}
 			case "Warrior":
 			{
-				System.out.println("uh oh");
+				createdPlayer.setCurrentHealth(60);
+				createdPlayer.setMaxHealth(60);
 				
-				Warrior thePlayer = new Warrior(name, difficulty);
-				MapMenu map = new MapMenu(thePlayer);
-				
-				boolean dog = true;
-				
-				while(dog == true)
-				{
-					
-					map.movement();
-					
-					
-				}
+				createdPlayer.setSpeed(8);
 				
 				break;
 			}
@@ -108,18 +75,9 @@ public class CharacterCreationMenu {
 			}
 			case "Mage":
 			{
-				Mage thePlayer = new Mage(name, difficulty);
-				MapMenu map = new MapMenu(thePlayer);
+				createdPlayer.setAttack(15);
 				
-				boolean dog = true;
-				
-				while(dog == true)
-				{
-					
-					map.movement();
-					
-					
-				}
+				createdPlayer.setAccuracy(60);
 				
 				break;
 			}
@@ -129,18 +87,10 @@ public class CharacterCreationMenu {
 			}
 			case "Archer":
 			{
-				Archer thePlayer = new Archer(name, difficulty);
-				MapMenu map = new MapMenu(thePlayer);
+				createdPlayer.setAccuracy(90);
 				
-				boolean dog = true;
-				
-				while(dog == true)
-				{
-					
-					map.movement();
-					
-					
-				}
+				createdPlayer.setCurrentHealth(45);
+				createdPlayer.setMaxHealth(45);
 				
 				break;
 			}
@@ -148,12 +98,10 @@ public class CharacterCreationMenu {
 			{
 				
 			}
-			
-			
-			
-			
 		}
 		
+		setPlayer(createdPlayer);
+		//scan.close();
 		
 	}
 	
