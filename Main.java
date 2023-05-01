@@ -13,18 +13,19 @@ public class Main {
 		//System.out.println("Hello, Hai");
 		
 		
-		CharacterCreationMenu newCharacter = new CharacterCreationMenu();
-		newCharacter.start();
+		CharacterCreationMenu newCharacter = new CharacterCreationMenu();	//initialize character creation menu
+		newCharacter.start();												//goes to character creation
 		
-		Player thePlayer = newCharacter.getPlayer();
+		Player thePlayer = newCharacter.getPlayer();						//initialize player character.
+																			//will be used in everything
 		
-		MapMenu playerMap = new MapMenu(thePlayer);
-		SaveMenu save = new SaveMenu();
+		MapMenu playerMap = new MapMenu(thePlayer);							//creates the map
+		SaveMenu save = new SaveMenu();										//initialize save menu
 		
-		int option = 0;
-		Scanner scan = new Scanner(System.in);
+		int option = 0;														//holds input
+		Scanner scan = new Scanner(System.in);								//reads input
 		
-		while(option != 4)
+		while(option != 4)													//mock-up menu
 		{
 			System.out.println("What do you want to do: \n");
 			System.out.println("1) Move");
@@ -38,19 +39,19 @@ public class Main {
 			{
 				case 1:
 				{
-					playerMap.movement(thePlayer);
+					playerMap.movement(thePlayer);							//Move around map
 					
 					break;
 				}
 				case 2:
 				{
-					thePlayer.printStats();
+					thePlayer.printStats();									//print stats
 					
 					break;
 				}
 				case 3:
 				{
-					save.saving(thePlayer);
+					save.saving(thePlayer);									//saves data
 					
 					break;
 				}
