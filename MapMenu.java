@@ -5,23 +5,23 @@ import java.util.Scanner;
 public class MapMenu {
 
 	
-	private int xCoor = 1;
-	private int yCoor = 1;
+	private int xCoor = 1;				//horizontal coordinate
+	private int yCoor = 1;				//vertical coordinate
 	
-	private int difficulty = 1;
+	private int difficulty = 1;			//idk
 	
-	private int mapWidth = 3;
-	private int mapLength = 3;
+	private int mapWidth = 3;			//Establishes map dimensions
+	private int mapLength = 3;			//Width = x, Length = y
 	
 	//-------------------------------
 	
 	MapMenu(Player player)
 	{
-		setXCoor(1);
-		setYCoor(1);
+		setXCoor(1);					//Starts player at (1,1), 
+		setYCoor(1);					//
 		
 		
-		switch(player.getDifficulty())
+		switch(player.getDifficulty())	//determine map dimensions
 		{
 			case 1:
 			{
@@ -29,6 +29,7 @@ public class MapMenu {
 				setMapLength(3);
 				System.out.println("Generated map is a 3x3 grid \n");
 				movementMessage();
+				player.spacesLeft();
 				
 				break;
 			}
@@ -38,6 +39,7 @@ public class MapMenu {
 				setMapLength(4);
 				System.out.println("Generated map is a 4x4 grid \n");
 				movementMessage();
+				player.spacesLeft();
 				
 				break;
 			}
@@ -47,6 +49,7 @@ public class MapMenu {
 				setMapLength(5);
 				System.out.println("Generated map is a 5x5 grid \n");
 				movementMessage();
+				player.spacesLeft();
 				
 				break;
 			}
@@ -68,8 +71,8 @@ public class MapMenu {
 	
 	
 	
-	//-------------------------------
 	
+	//getters
 	public void setXCoor(int x)
 	{
 		xCoor = x;
@@ -95,7 +98,7 @@ public class MapMenu {
 		mapLength = l;
 	}
 	
-	
+	//setters
 	public int getXCoor()
 	{
 		return xCoor;
@@ -121,21 +124,15 @@ public class MapMenu {
 		return mapLength;
 	}
 	
-	public void createMap()
-	{
-		
-		
-		
-		
-	}
 	
-	public void movement(Player player)
+	//Other methods
+	public void movement(Player player)			//moves the player in a direction
 	{
 		
 		String direction = "";
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("enter in the direction you wish to travel to. \n");
+		System.out.println("enter in the direction you wish to travel to. \n");	//needs input validation
 		System.out.println("-North ");
 		System.out.println("-South ");
 		System.out.println("-East ");
@@ -143,7 +140,7 @@ public class MapMenu {
 		
 		direction = scan.next();
 		
-		//clearScreen();
+		//clearScreen();		//Doesn't work
 		
 		switch(direction)
 		{
@@ -201,7 +198,7 @@ public class MapMenu {
 			}
 			default:
 			{
-				System.out.println("huh ? \n");
+				System.out.println("huh ? \n");		//lol what is this
 			}
 		
 		}
@@ -209,13 +206,24 @@ public class MapMenu {
 		
 		movementMessage();
 		
+		player.isNewSpace(getXCoor(), getYCoor());
+		player.spacesLeft();
+		
+		if(player.mapComplete() == true)
+		{
+			newWave(player);
+			
+			
+			
+		}
+		
 		//scan.close();
 		
 	}
 	
 	
-	public boolean checkWall(int value, Player player)
-	{
+	public boolean checkWall(int value, Player player)		//punish the player if they try to go out of bound
+	{														//of the map's established dimensions
 		
 		
 		if(value <= 0 || value > getMapWidth() || value > getMapLength())
@@ -233,27 +241,38 @@ public class MapMenu {
 		
 	}
 	
-	public void movementMessage()
-	{
+	public void movementMessage()			//each time the player moves, they will be notified
+	{										//where they are on the map.
 		
 		System.out.println("You are now at coordinate (" 
 							+ getXCoor() + ", " 
 							+ getYCoor() + ").");
-
 		
 	}
 	
-	public static void clearScreen()
+	public static void clearScreen()		//doesn't work, I hate java
 	{  
 	    System.out.print("\033[H\033[2J");  
 	    System.out.flush();  
 	}  
 	
+	public void newWave(Player player)
+	{
+		
+		player.resetMap();
+		System.out.println("You have completed wave" + (player.getWaveCount()));  
+		System.out.println("Starting wave" + (player.getWaveCount() + 1));  
+		
+		setXCoor(1);
+		setYCoor(1);
+		
+	}
 	
 	
 	
 	
-	public static void main(String[] args) 
+	
+	public static void main(String[] args) 								//to remove
 	{
 		
 		
