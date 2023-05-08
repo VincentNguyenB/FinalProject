@@ -1,9 +1,11 @@
 
-
+//import java.util.Random;
 
 public class Enemy extends Unit{
 
-
+	
+	//private Boolean flying = false;
+	
 	
 	
 	
@@ -11,18 +13,12 @@ public class Enemy extends Unit{
 	{
 		super(name, difficulty);
 		
-		
-		setCurrentHealth(50);
-		setMaxHealth(50);
-		setCurrentMana(20);
-		setMaxMana(20);
-		setAttack(10);
-		setSpeed(10);
-		setAccuracy(75);
-		setExperience(0);
+		generateStats(name, difficulty);
 		
 		
 	}
+	
+	
 	
 	public void printStats()
 	{
@@ -39,8 +35,34 @@ public class Enemy extends Unit{
 	}
 	
 	
-	
-
+	public void generateStats(String name, int difficulty)
+	{
+		
+		//int dog = (int) (Math.random() * (30 - 10) + 10);
+		
+		//(int) ((Math.random() * (15 - 10) + 10) * (difficulty * 2))
+		
+		//balancing for later 
+		int health = (int) ((Math.random() * (15 - 10) + 10) * (difficulty * 2));
+		int mana = (int) ((Math.random() * (10 - 5) + 5) * (difficulty * 2));
+		int attack = (int) ((Math.random() * (4 - 2) + 2) + (difficulty * 2));
+		int speed =  (int) ((Math.random() * (10 - 5) + 5) + (difficulty * 2));
+		int accuracy =  (int) ((Math.random() * (70 - 50) + 50) + (difficulty * 2));
+		int exp =   (int) ((Math.random() * (10 - 5) + 5) + (difficulty * 2));
+		int gold =   (int) ((Math.random() * (10 - 5) + 5) + (difficulty * 2));
+		
+		setCurrentHealth(health);
+		setMaxHealth(health);
+		setCurrentMana(mana);
+		setMaxMana(mana);
+		setAttack(attack);
+		setSpeed(speed);
+		setAccuracy(accuracy);
+		setExperience(exp);
+		setGold(gold);
+		
+		
+	}
 	
 	
 	public static void main(String[] args) 
@@ -56,6 +78,7 @@ public class Enemy extends Unit{
 		*/
 		
 	}
+
 	
 	
 	

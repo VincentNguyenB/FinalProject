@@ -6,21 +6,20 @@ public class CharacterCreationMenu {
 	
 	private Player createdPlayer;
 		
-		
+	//setters	
 	public void setPlayer(Player p)
 	{
 		createdPlayer = p;
 	}
 	
-	//--------------
-	
+	//getters
 	public Player getPlayer()
 	{
 		return createdPlayer;
 	}
 		
 	
-	
+	//other methods
 	public void start()
 	{
 		String name = "";

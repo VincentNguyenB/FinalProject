@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class SaveMenu {
+public class SaveMenu {			
 	
 	
 	private Player savePlayer;
@@ -17,13 +17,17 @@ public class SaveMenu {
 		
 	}
 	
-	
-	
+	//the save menu NEEDS the following:
+	//-saves map dimensions
+	//-saves progress of steps stepped on
+	//
+	//
+	//
 	
 	public void saving(Player player) throws FileNotFoundException
 	{
 		String directory = "\\Users\\aweso\\Documents";
-		
+		//google java get direct directory
 		File newSave = new File("\\Users\\aweso\\Documents\\gameSave.txt");
 		
 		
@@ -67,11 +71,50 @@ public class SaveMenu {
 		pen.print(player.getExperience());
 		pen.print(" ");
 		pen.print(player.getNextLevel());
+		pen.print(" ");
+		pen.print(player.getGold());
+		pen.print(" ");
+		
+		pen.print(player.getWaveCount());
+		pen.print(" ");
+		
+		for(int i = 0; i < player.getXYSpaces().length; i++)
+		{
+			for(int j = 0; j < player.getXYSpaces().length; j++)
+			{
+				
+				pen.print(player.getXYSpaces()[i][j].getX());
+				pen.print(" ");
+				pen.print(player.getXYSpaces()[i][j].getY());
+				pen.print(" ");
+				
+			}
+		}
+
+		
+		
+		/*
+		for(int i = 0; i < player.getXYSpaces().length; i++)
+		{
+			for(int j = 0; j < player.getXYSpaces().length; j++)
+			{
+				
+				pen.print(player.getXYSpaces()[i][j].getX());
+				pen.print(" ");
+				pen.print(player.getXYSpaces()[i][j].getY());
+				pen.print(" ");
+				pen.print("\n");
+				
+			}
+		}
+		*/
 		
 		System.out.println("Saving game, please don't turn off the device... ");
 		
 
 		pen.close();
+		System.exit(0);
+		
 		
 	}
 	
@@ -104,6 +147,22 @@ public class SaveMenu {
 			player.setAccuracy(lineReader.nextInt());
 			player.setExperience(lineReader.nextInt());
 			player.setNextLevel(lineReader.nextInt());
+			player.setGold(lineReader.nextInt());
+			
+			player.setWaveCount(lineReader.nextInt());
+			
+			//System.out.println("help me");
+			for(int i = 0; i < player.getXYSpaces().length; i++)
+			{
+				for(int j = 0; j < player.getXYSpaces().length; j++)
+				{
+					
+					player.getXYSpaces()[i][j].setX(lineReader.nextInt());
+					player.getXYSpaces()[i][j].setY(lineReader.nextInt());
+					
+				}
+			}
+			
 			
 			/*
 			//test print
@@ -157,8 +216,8 @@ public class SaveMenu {
 		
 		
 		
-		//testSave.saving(test);
-		//System.out.println("Saving, please wait... ");
+		testSave.saving(test);
+		System.out.println("Saving, please wait... ");
 		
 		
 	}

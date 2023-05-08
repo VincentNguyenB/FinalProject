@@ -17,6 +17,7 @@ public abstract class Unit {
 	private int speed;
 	private int accuracy;
 	private int experience;
+	private int gold;
 	
 	
 	
@@ -90,6 +91,11 @@ public abstract class Unit {
 		experience = e;
 	}
 	
+	public void setGold(int g)
+	{
+		gold = g;
+	}
+	
 	
 
 	//---------------
@@ -144,6 +150,10 @@ public abstract class Unit {
 		return experience;
 	}
 	
+	public int getGold()
+	{
+		return gold;
+	}
 	
 	
 	
