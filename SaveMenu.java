@@ -26,9 +26,10 @@ public class SaveMenu {
 	
 	public void saving(Player player) throws FileNotFoundException
 	{
-		String directory = "\\Users\\aweso\\Documents";
+		//String directory = "\\Users\\aweso\\Documents";
+		String directory = System.getProperty("user.dir");
 		//google java get direct directory
-		File newSave = new File("\\Users\\aweso\\Documents\\gameSave.txt");
+		File newSave = new File(directory + "\\gameSave.txt");
 		
 		
 		if(!newSave.exists())
@@ -206,18 +207,20 @@ public class SaveMenu {
 		//String directory = "\\Users\\aweso\\eclipse-workspace\\VincentProject";
 		
 		//new location
-		String directory = "\\Users\\aweso\\Documents\\gameSave.txt";
+		//String directory = "\\Users\\aweso\\Documents\\gameSave.txt";
+		String directory = System.getProperty("user.dir");
+		//System.getProperty("user.dir")
 		
 		Player test = new Player("Bob", 1);
 		SaveMenu testSave = new SaveMenu();
+		//System.out.println(System.getProperty("user.dir"));
+		
+		testSave.loading(directory + "\\gameSave.txt", test);
 		
 		
-		//testSave.loading(directory, test);
 		
-		
-		
-		testSave.saving(test);
-		System.out.println("Saving, please wait... ");
+		//testSave.saving(test);
+		//System.out.println("Saving, please wait... ");
 		
 		
 	}
