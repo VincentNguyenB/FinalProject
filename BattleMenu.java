@@ -175,9 +175,6 @@ public class BattleMenu implements Comparator<Unit> {
 		
 		System.out.println("Select action:");
 		System.out.println("1) Attack (" + player.getAccuracy() + " % accuracy)");
-		System.out.println("2) Items");
-		System.out.println("3) Spells");
-		System.out.println("4) Run");
 		
 		option = scan.nextInt();
 		
