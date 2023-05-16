@@ -20,20 +20,20 @@ public class CharacterCreationMenu {
 		
 	
 	//other methods
-	public void start()
+	public void start(Scanner scan)
 	{
 		String name = "";
 		String playerClass = "";
 		int difficulty = 1;
 		
-		Scanner scan = new Scanner(System.in);
+		//Scanner scan = new Scanner(System.in);
 
 		
 		System.out.println("Please enter name: ");
 		name = scan.next();
 		
 		
-		System.out.println("Please type in the class for your character: \n");
+		System.out.println("Please type in the class name for your character: \n");
 		System.out.println("1) Warrior (Health up | speed down)");
 		System.out.println("2) Mage (Attack up | accuracy down)");
 		System.out.println("3) Archer (Accuracy up | health down)");

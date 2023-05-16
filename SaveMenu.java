@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class SaveMenu {			
 	
 	
-	private Player savePlayer;
+	//private Player savePlayer;
 	
 	
 	SaveMenu()
@@ -17,12 +17,6 @@ public class SaveMenu {
 		
 	}
 	
-	//the save menu NEEDS the following:
-	//-saves map dimensions
-	//-saves progress of steps stepped on
-	//
-	//
-	//
 	
 	public void saving(Player player) throws FileNotFoundException
 	{
@@ -168,7 +162,7 @@ public class SaveMenu {
 			/*
 			//test print
 			System.out.println(lineReader.next() + "'s Stats: \n");
-			System.out.println("Level: " + lineReader.next());		//problem
+			System.out.println("Level: " + lineReader.next());		
 			System.out.println("Difficulty: " + lineReader.nextInt());
 			
 			System.out.println("Current Health: " + lineReader.nextInt());
@@ -187,7 +181,7 @@ public class SaveMenu {
 		
 		System.out.println("Loading complete!");
 		
-		
+		lineReader.close();
 		pen.close();
 		
 	}

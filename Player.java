@@ -105,6 +105,7 @@ public class Player extends Unit{
 		System.out.println("Accuracy: " + getAccuracy());
 		System.out.println("Current experience: " + getExperience());
 		System.out.println("EXP to next level: " + getNextLevel());
+		System.out.println("Gold: " + getGold());
 		System.out.println("\n");
 		
 
@@ -250,7 +251,7 @@ public class Player extends Unit{
 	public static void main(String[] args) 
 	{
 		
-		Player bob = new Player("bob", 1);
+		//Player bob = new Player("bob", 1);
 		
 		//when printing, i = 0, getDifficulty() + 1
 		
