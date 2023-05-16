@@ -12,9 +12,9 @@ public class Main {
 		
 		//System.out.println("Hello, Hai");
 		
-		
+		Scanner scan = new Scanner(System.in);								//reads input
 		CharacterCreationMenu newCharacter = new CharacterCreationMenu();	//initialize character creation menu
-		newCharacter.start();												//goes to character creation
+		newCharacter.start(scan);												//goes to character creation
 		
 		Player thePlayer = newCharacter.getPlayer();						//initialize player character.
 																			//will be used in everything
@@ -24,7 +24,7 @@ public class Main {
 		String directory = "\\Users\\aweso\\Documents\\gameSave.txt";		//directory temp
 		
 		int option = 0;														//holds input
-		Scanner scan = new Scanner(System.in);								//reads input
+		//Scanner scan = new Scanner(System.in);								//reads input
 		
 		while(option != 4)													//mock-up menu
 		{
@@ -40,7 +40,7 @@ public class Main {
 			{
 				case 1:
 				{
-					playerMap.movement(thePlayer);							//Move around map
+					playerMap.movement(thePlayer, scan);							//Move around map
 					
 					break;
 				}

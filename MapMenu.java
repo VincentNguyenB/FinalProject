@@ -8,8 +8,6 @@ public class MapMenu {
 	private int xCoor = 1;				//horizontal coordinate
 	private int yCoor = 1;				//vertical coordinate
 	
-	private int difficulty = 1;			//idk
-	
 	private int mapWidth = 3;			//Establishes map dimensions
 	private int mapLength = 3;			//Width = x, Length = y
 	
@@ -27,7 +25,7 @@ public class MapMenu {
 			{
 				setMapWidth(3);
 				setMapLength(3);
-				System.out.println("Generated map is a 3x3 grid \n");
+				System.out.println("Generated map is a 3x3 grid. \n");
 				movementMessage();
 				player.spacesLeft();
 				
@@ -37,7 +35,7 @@ public class MapMenu {
 			{
 				setMapWidth(4);
 				setMapLength(4);
-				System.out.println("Generated map is a 4x4 grid \n");
+				System.out.println("Generated map is a 4x4 grid. \n");
 				movementMessage();
 				player.spacesLeft();
 				
@@ -47,7 +45,7 @@ public class MapMenu {
 			{
 				setMapWidth(5);
 				setMapLength(5);
-				System.out.println("Generated map is a 5x5 grid \n");
+				System.out.println("Generated map is a 5x5 grid. \n");
 				movementMessage();
 				player.spacesLeft();
 				
@@ -83,11 +81,6 @@ public class MapMenu {
 		yCoor = y;
 	}
 	
-	public void setDifficulty(int d)
-	{
-		difficulty = d;
-	}
-	
 	public void setMapWidth(int w)
 	{
 		mapWidth = w;
@@ -109,11 +102,6 @@ public class MapMenu {
 		return yCoor;
 	}
 	
-	public int getDifficulty()
-	{
-		return difficulty;
-	}
-	
 	public int getMapWidth()
 	{
 		return mapWidth;
@@ -126,11 +114,11 @@ public class MapMenu {
 	
 	
 	//Other methods
-	public void movement(Player player)			//moves the player in a direction
+	public void movement(Player player, Scanner scan)			//moves the player in a direction
 	{
 		
 		String direction = "";
-		Scanner scan = new Scanner(System.in);
+		//Scanner scan = new Scanner(System.in);
 		
 		System.out.println("enter in the direction you wish to travel to. \n");	//needs input validation
 		System.out.println("-North ");
@@ -139,8 +127,6 @@ public class MapMenu {
 		System.out.println("-West ");
 		
 		direction = scan.next();
-		
-		//clearScreen();		//Doesn't work
 		
 		switch(direction)
 		{
@@ -198,17 +184,17 @@ public class MapMenu {
 			}
 			default:
 			{
-				System.out.println("huh ? \n");		//lol what is this
+				System.out.println("That's not a valid direction. You decide to stay in the area. \n");
 			}
 		
 		}
 		
-		events(player);
+		events(player, scan);		//roll for events
 		
 		
 		movementMessage();
 		
-		player.isNewSpace(getXCoor(), getYCoor());
+		player.isNewSpace(getXCoor(), getYCoor());		//reduce spaces if area is unexplored.
 		player.spacesLeft();
 		
 		if(player.mapComplete() == true)
@@ -250,13 +236,7 @@ public class MapMenu {
 							+ getXCoor() + ", " 
 							+ getYCoor() + ").");
 		
-	}
-	
-	public static void clearScreen()		//doesn't work, I hate java
-	{  
-	    System.out.print("\033[H\033[2J");  
-	    System.out.flush();  
-	}  
+	} 
 	
 	public void newWave(Player player)
 	{
@@ -270,7 +250,7 @@ public class MapMenu {
 		
 	}
 	
-	public void events(Player player)
+	public void events(Player player, Scanner scan)		
 	{
 		int die = (int) ((Math.random() * (10 - 1) + 1));
 		
@@ -291,7 +271,7 @@ public class MapMenu {
 				BattleMenu fight = new BattleMenu();
 				System.out.println(player.getName() + "has been ambushed!");
 				
-				fight.encounter(player);
+				fight.encounter(player, scan);
 				
 				break;
 			}
@@ -318,7 +298,7 @@ public class MapMenu {
 			}
 			case 7:
 			{
-				System.out.println(player.getName() + "continued their adventure.");
+				System.out.println(player.getName() + " continued their adventure.");
 				
 				break;
 			}
@@ -361,12 +341,12 @@ public class MapMenu {
 	{
 		
 		
-		Player testWarrior = new Player("Bob", 1);
+		//Player testWarrior = new Player("Bob", 1);
 		
-		MapMenu playerMap = new MapMenu(testWarrior);
+		//MapMenu playerMap = new MapMenu(testWarrior);
 				
-		boolean dog = true;
-		
+		//boolean dog = true;
+		/*
 		while(dog == true)
 		{
 			
@@ -374,7 +354,7 @@ public class MapMenu {
 			
 			
 		}
-		
+		*/
 		
 		
 		

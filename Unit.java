@@ -160,7 +160,7 @@ public abstract class Unit {
 	public boolean isDead()
 	{
 		
-		if(getCurrentHealth() == 0)
+		if(getCurrentHealth() <= 0)
 		{
 			return true;
 		}

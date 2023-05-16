@@ -11,15 +11,15 @@ public class BattleMenu implements Comparator<Unit> {
 		
 	}
 	
-	public void encounter(Player player)					//use this to initiate fight
+	public void encounter(Player player, Scanner scan)					//use this to initiate fight
 	{
 		
 		
-		//Enemy[] enemyEncounter = generateEnemy(player);		//generates 1-3 enemies
+		//Enemy[] enemyEncounter = generateEnemy(player);		//generates 1-3 enemies, DOES NOT WORK
 		Enemy[] enemyEncounter = generateEnemySingle(player);
 		
 		
-		battleOrder(player, enemyEncounter);				//starts order
+		battleOrder(player, scan, enemyEncounter);				//starts order
 		
 		
 	}
@@ -69,7 +69,7 @@ public class BattleMenu implements Comparator<Unit> {
 		
 	}
 	
-	public void battleOrder(Player player, Enemy ...e )	//make varags
+	public void battleOrder(Player player, Scanner scan, Enemy ...e )	//make varags
 	{
 		
 		//Queue<Unit> turnOrder = new PriorityQueue<Unit>(Collections.reverseOrder());
@@ -100,7 +100,7 @@ public class BattleMenu implements Comparator<Unit> {
 				if(turnOrder.peek() == player)
 				{
 					turnOrder.poll();
-					playerAction(player, e);
+					playerAction(player, scan, e);
 					
 					if(player.getCurrentHealth() > 0)
 					{
@@ -158,11 +158,11 @@ public class BattleMenu implements Comparator<Unit> {
 		
 	}
 	
-	public void playerAction(Player player, Enemy ...e)
+	public void playerAction(Player player, Scanner scan, Enemy ...e)
 	{
 		
 		int option = 0;														//holds input
-		Scanner scan = new Scanner(System.in);								//reads input
+		//Scanner scan = new Scanner(System.in);								//reads input
 		
 		
 		System.out.println("Health: " + player.getCurrentHealth() 
@@ -175,7 +175,6 @@ public class BattleMenu implements Comparator<Unit> {
 		
 		System.out.println("Select action:");
 		System.out.println("1) Attack (" + player.getAccuracy() + " % accuracy)");
-		
 		option = scan.nextInt();
 		
 		switch(option)
@@ -206,7 +205,7 @@ public class BattleMenu implements Comparator<Unit> {
 
 		}
 		
-		
+		//scan.close();
 	}
 	
 	public void attack(Player attacker, Enemy...defender )
@@ -290,10 +289,10 @@ public class BattleMenu implements Comparator<Unit> {
 	public static void main(String[] args) 
 	{
 		
-		Player player = new Player("Hai", 1);
-		BattleMenu fight = new BattleMenu();
+		//Player player = new Player("Hai", 1);
+		//BattleMenu fight = new BattleMenu();
 		
-		fight.encounter(player);
+		//fight.encounter(player, scan);
 		
 		
 		
