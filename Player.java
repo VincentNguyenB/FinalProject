@@ -11,6 +11,9 @@ public class Player extends Unit{
 	
 	private int waveCount = 0;
 	
+	private int currentX = 1;
+	private int currentY = 1;
+	
 	public Player(String name, int difficulty)
 	{
 		super(name, difficulty);
@@ -27,6 +30,9 @@ public class Player extends Unit{
 		setExperience(0);
 		setNextLevel(20);
 		setGold(0);
+		
+		setCurrentX(1);
+		setCurrentY(1);
 		
 		resetMap();
 		
@@ -68,6 +74,16 @@ public class Player extends Unit{
 		waveCount = i;
 	}
 	
+	public void setCurrentX(int x)
+	{
+		currentX = x;
+	}
+	
+	public void setCurrentY(int y)
+	{
+		currentY = y;
+	}
+	
 	//--------------
 	
 	public int getDifficulty()
@@ -90,16 +106,24 @@ public class Player extends Unit{
 		return waveCount;
 	}
 	
+	public int getCurrentX()
+	{
+		return currentX;
+	}
+	
+	public int getCurrentY()
+	{
+		return currentY;
+	}
+	
 	
 	public void printStats()
 	{
 		
 		System.out.println(getName() + "'s Stats: \n");
 		System.out.println("Level: " + getLevel());
-		System.out.println("Current Health: " + getCurrentHealth());
-		System.out.println("Max Health: " + getMaxHealth());
-		System.out.println("Current Mana: " + getCurrentMana());
-		System.out.println("Max Mana: " + getMaxMana());
+		System.out.println("Health: " + getCurrentHealth() + "/" + getMaxHealth());
+		System.out.println("Mana: " + getCurrentMana()+ "/" + getMaxMana());
 		System.out.println("Attack: " + getAttack());
 		System.out.println("Speed: " + getSpeed());
 		System.out.println("Accuracy: " + getAccuracy());

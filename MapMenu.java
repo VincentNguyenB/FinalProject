@@ -15,8 +15,8 @@ public class MapMenu {
 	
 	MapMenu(Player player)
 	{
-		setXCoor(1);					//Starts player at (1,1), 
-		setYCoor(1);					//
+		setXCoor(player.getCurrentX());					//Starts player at (1,1), 
+		setYCoor(player.getCurrentY());					//
 		
 		
 		switch(player.getDifficulty())	//determine map dimensions
@@ -189,6 +189,9 @@ public class MapMenu {
 		
 		}
 		
+		player.setCurrentX(xCoor);
+		player.setCurrentY(yCoor);
+		
 		events(player, scan);		//roll for events
 		
 		
@@ -269,7 +272,7 @@ public class MapMenu {
 			case 3:
 			{
 				BattleMenu fight = new BattleMenu();
-				System.out.println(player.getName() + "has been ambushed!");
+				System.out.println(player.getName() + " has been ambushed!");
 				
 				fight.encounter(player, scan);
 				
@@ -283,7 +286,7 @@ public class MapMenu {
 			case 5:
 			{
 				System.out.println("Walking around you spot a bag of gold");  
-				System.out.println(player.getName() + "has obtained " + die + " gold.");  
+				System.out.println(player.getName() + " has obtained " + die + " gold.");  
 				
 				player.setGold(player.getGold() + die);
 				
@@ -317,7 +320,7 @@ public class MapMenu {
 			}
 			case 10:
 			{
-				System.out.println(player.getName() + "attempted to pet a rabid dog.");
+				System.out.println(player.getName() + " attempted to pet a rabid dog.");
 				System.out.println(player.getName() + "lost " + die + " health.");
 				
 				break;

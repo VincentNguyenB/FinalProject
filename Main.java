@@ -1,4 +1,5 @@
 
+//import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -10,29 +11,31 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException 
 	{
 		
-		//System.out.println("Hello, Hai");
 		
 		Scanner scan = new Scanner(System.in);								//reads input
-		CharacterCreationMenu newCharacter = new CharacterCreationMenu();	//initialize character creation menu
-		newCharacter.start(scan);												//goes to character creation
 		
-		Player thePlayer = newCharacter.getPlayer();						//initialize player character.
-																			//will be used in everything
+		Player thePlayer = new Player("Bob", 1);						//initialize player character.
+																		//will be used in everything
+		String directory = System.getProperty("user.dir");
+		String location = directory + "\\gameSave.txt";	
+		//File newSave = new File(directory + "\\gameSave.txt");
 		
-		MapMenu playerMap = new MapMenu(thePlayer);							//creates the map
+		
 		SaveMenu save = new SaveMenu();										//initialize save menu
-		String directory = "\\Users\\aweso\\Documents\\gameSave.txt";		//directory temp
+		InGameMenu game = new InGameMenu();
+	
 		
 		int option = 0;														//holds input
-		//Scanner scan = new Scanner(System.in);								//reads input
 		
-		while(option != 4)													//mock-up menu
+		while(option < 4 || option >= 0)													//mock-up menu
 		{
-			System.out.println("What do you want to do: \n");
-			System.out.println("1) Move");
-			System.out.println("2) Check stats");
-			System.out.println("3) Load existing file");
-			System.out.println("4) Save and Exit");
+			System.out.println("Epic Game \n");
+			
+			System.out.println("Type in the # of the option: \n");
+			System.out.println("1) Start New Game");
+			System.out.println("2) Load Existing File");
+			System.out.println("3) Credits");
+			System.out.println("4) Exit");
 			
 			option = scan.nextInt();
 			
@@ -40,25 +43,34 @@ public class Main {
 			{
 				case 1:
 				{
-					playerMap.movement(thePlayer, scan);							//Move around map
+					CharacterCreationMenu newCharacter = new CharacterCreationMenu();	//initialize character creation menu
+					newCharacter.start(scan);											//goes to character creation
+					
+					thePlayer = newCharacter.getPlayer();						//initialize player character.
+					
+					
+					
+					game.gameMenu(thePlayer, scan, save);
+					option = 4;
 					
 					break;
 				}
 				case 2:
 				{
-					thePlayer.printStats();									//print stats
-					
+					save.loading(location, thePlayer);									//saves data
+					game.gameMenu(thePlayer, scan, save);
+					option = 4;
 					break;
 				}
 				case 3:
 				{
-					save.loading(directory, thePlayer);									//saves data
+					game.credits();
 					
 					break;
 				}
 				case 4:
 				{
-					save.saving(thePlayer);									//saves data
+					
 					
 				}
 

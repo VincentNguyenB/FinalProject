@@ -170,7 +170,7 @@ public abstract class Unit {
 	}
 	
 	
-	
+	abstract public void printStats();
 	
 	
 	

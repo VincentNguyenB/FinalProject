@@ -70,6 +70,11 @@ public class SaveMenu {
 		pen.print(player.getGold());
 		pen.print(" ");
 		
+		pen.print(player.getCurrentX());
+		pen.print(" ");
+		pen.print(player.getCurrentY());
+		pen.print(" ");
+		
 		pen.print(player.getWaveCount());
 		pen.print(" ");
 		
@@ -143,6 +148,9 @@ public class SaveMenu {
 			player.setExperience(lineReader.nextInt());
 			player.setNextLevel(lineReader.nextInt());
 			player.setGold(lineReader.nextInt());
+			
+			player.setCurrentX(lineReader.nextInt());
+			player.setCurrentY(lineReader.nextInt());
 			
 			player.setWaveCount(lineReader.nextInt());
 			
