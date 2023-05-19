@@ -19,8 +19,8 @@ public class InGameMenu {
 		
 		MapMenu playerMap = new MapMenu(player);							//creates the map
 		
-		String directory = "\\Users\\aweso\\Documents\\gameSave.txt";		//directory temp
-		
+		String directory = System.getProperty("user.dir");
+		String location = directory + "\\gameSave.txt";	
 		int option = 0;														//holds input
 		//Scanner scan = new Scanner(System.in);								//reads input
 		
@@ -50,7 +50,7 @@ public class InGameMenu {
 				}
 				case 3:
 				{
-					save.loading(directory, player);									//saves data
+					save.loading(location, player);									//saves data
 					
 					break;
 				}
